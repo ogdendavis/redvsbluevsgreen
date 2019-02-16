@@ -11,7 +11,9 @@
     <main class="main-content">
 
       <div class="standings">
-        <?php // This will hold the code for grabbing & displaying results from games.crossfit.com! ?>
+        <?php // This will hold the code for grabbing & displaying results from games.crossfit.com! Trying to use the REST api, now...
+        ?>
+
       </div>
 
       <div class="analysis">
