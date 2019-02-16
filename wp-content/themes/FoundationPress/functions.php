@@ -56,3 +56,14 @@ require_once( 'library/gutenberg.php' );
 
 /** If your site requires protocol relative url's for theme assets, uncomment the line below */
 // require_once( 'library/class-foundationpress-protocol-relative-theme-assets.php' );
+
+/* Register widget area at bottom of home page -- will hold photos */
+if ( function_exists('register_sidebar') )
+  register_sidebar(array(
+    'name' => 'Front Page Bottom',
+    'before_widget' => '<div class = "images__widget">',
+    'after_widget' => '</div>',
+    'before_title' => '<h2>',
+    'after_title' => '</h2>',
+  )
+);
