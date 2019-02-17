@@ -87,6 +87,9 @@ function get_athletes() {
   // Put all athletes into one big array!
   $all_athletes = array_merge($all_men, $all_women);
 
+  // Compute custom score for gender-combined leaderboard
+  $scored_athletes = score_athletes($all_athletes);
+
   // Add team indicator to each entrant
   foreach($all_athletes as $athlete) {
     if( in_array($athlete->entrant->competitorId, $red_team_ids) ) {
@@ -102,6 +105,48 @@ function get_athletes() {
 
   // Return all athletes, with teams appended
   return $all_athletes;
+}
+
+function score_athletes( &$athletes ) {
+  // Counting the number of wod scores on the first athlete, assuming that it
+  // will be the same for all athletes
+  $wods = count(reset($athletes)->scores);
+
+  // Calculate score for each WOD
+  for ($i = 0; $i < $wods; $i++) {
+    // Sort $athletes by score in each wod, then use new index to indicate rank
+    // for that WOD and append it to the athlete
+    usort($athletes, function($a,$b) {
+      //higher score is better, sorting reverse so index is points (not rank)
+      return $a->scores[$i]->score > $b->scores[$i]->score ? -1 : 1;
+    });
+
+    foreach($athletes as $index=>$athlete) {
+      // All athletes who didn't do the WOD get 0 points
+      if ($athlete->scores[$i]->score === '0') {
+        $athlete->scores[$i]->tcfPoints = 0;
+      }
+      else {
+        $athlete->scores[$i]->tcfPoints = $index;
+      }
+    }
+  }
+
+  // Now calculate overall score
+  foreach($athletes as $athlete) {
+    // Create point total variable
+    $athlete->tcfPointTotal = 0;
+    // Add points from each WOD to the total
+    foreach($athlete->scores as $score) {
+      $athlete->tcfPointTotal += $score->tcfPoints;
+    }
+  }
+
+  // Sort athletes by overall score and return
+  usort($athletes, function($a,$b) {
+    return $a->tcfPointTotal < $b->tcfPointTotal ? 1 : -1;
+  });
+  return $athletes;
 }
 
 
@@ -137,10 +182,20 @@ function sort_athletes( $request ) {
       return $athletes;
   }
 
-  // Sort and return
-  return array_filter($athletes, function($athlete) use ($filter_field, $filter_value) {
-    return ($athlete->entrant->{$filter_field} == $filter_value);
+  // Filter for the group of athletes requested
+  $result = array_filter($athletes, function($athlete) use ($filter_field, $filter_value) {
+    return ($athlete->entrant->{$filter_field} === $filter_value);
   });
+
+  // Sort by group ranking
+  /***** MODIFY THIS to use new in-house score, once finished *****/
+  // usort($result, function($a, $b) {
+  //   return $a->overallScore <= $b->overallScore ? -1 : 1;
+  // });
+  $scored_result = score_athletes($result);
+
+  // And return!
+  return $scored_result;
 }
 
 
