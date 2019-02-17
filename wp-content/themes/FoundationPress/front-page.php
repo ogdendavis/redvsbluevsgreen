@@ -24,6 +24,7 @@
           // e.g. /tcf-athletes/v1/standings?teams=all&gender=male
           $request = new WP_REST_Request( 'GET', '/tcf-athletes/v1/all' );
           $response = rest_do_request($request);
+          //var_dump($response);
         ?>
         <style>
           td {

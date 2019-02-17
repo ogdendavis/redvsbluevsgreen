@@ -114,21 +114,18 @@ function score_athletes( &$athletes ) {
 
   // Calculate score for each WOD
   for ($i = 0; $i < $wods; $i++) {
-    // Sort $athletes by score in each wod, then use new index to indicate rank
-    // for that WOD and append it to the athlete
-    usort($athletes, function($a,$b) {
-      //higher score is better, sorting reverse so index is points (not rank)
-      return $a->scores[$i]->score > $b->scores[$i]->score ? -1 : 1;
-    });
+    // Create array containing all scores for one WOD
+    $wod_scores = array();
+    foreach($athletes as $athlete) {
+      $wod_scores[] = $athlete->scores[$i]->score;
+    }
+    // Sort scores high to low
+    rsort($wod_scores);
 
-    foreach($athletes as $index=>$athlete) {
-      // All athletes who didn't do the WOD get 0 points
-      if ($athlete->scores[$i]->score === '0') {
-        $athlete->scores[$i]->tcfPoints = 0;
-      }
-      else {
-        $athlete->scores[$i]->tcfPoints = $index;
-      }
+    // Assign each athlete a point total based on how well he/she scored overall
+    // Tied scores will share the highest (worst) points available for the score
+    foreach($athletes as $athlete) {
+      $athlete->scores[$i]->tcfPoints = max(array_keys($wod_scores, $athlete->scores[$i]->score)) + 1;
     }
   }
 
@@ -144,7 +141,7 @@ function score_athletes( &$athletes ) {
 
   // Sort athletes by overall score and return
   usort($athletes, function($a,$b) {
-    return $a->tcfPointTotal < $b->tcfPointTotal ? 1 : -1;
+    return $a->tcfPointTotal > $b->tcfPointTotal ? 1 : -1;
   });
   return $athletes;
 }
@@ -187,11 +184,7 @@ function sort_athletes( $request ) {
     return ($athlete->entrant->{$filter_field} === $filter_value);
   });
 
-  // Sort by group ranking
-  /***** MODIFY THIS to use new in-house score, once finished *****/
-  // usort($result, function($a, $b) {
-  //   return $a->overallScore <= $b->overallScore ? -1 : 1;
-  // });
+  // Sort by group ranking -- lower points is better
   $scored_result = score_athletes($result);
 
   // And return!
