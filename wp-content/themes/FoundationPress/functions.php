@@ -107,6 +107,7 @@ function get_athletes() {
   return $all_athletes;
 }
 
+// Function to calculate custom tcf scrore for athletes!
 function score_athletes( &$athletes ) {
   // Counting the number of wod scores on the first athlete, assuming that it
   // will be the same for all athletes
@@ -146,8 +147,7 @@ function score_athletes( &$athletes ) {
   return $athletes;
 }
 
-
-// Function to sort athletes and return it per the request's parameters
+// Function to sort athletes and return only the requested ones (by team or gender)
 function sort_athletes( $request ) {
   // Get athletes!
   $athletes = get_athletes();
@@ -191,6 +191,55 @@ function sort_athletes( $request ) {
   return $scored_result;
 }
 
+// Function to calculate total team score
+function score_teams() {
+  // Helper function to get all athltes in a team, scored
+  function get_team( $team_color ) {
+    $request = new WP_REST_Request( 'GET', '/tcf-athletes/v1/sort/' . $team_color );
+    return rest_do_request($request);
+  }
+
+  // Get the teams, scored
+  $red_team = get_team('red')->data;
+  $blue_team = get_team('blue')->data;
+  $green_team = get_team('green')->data;
+
+  // Helper function to generate an overall team score
+  function score_team_overall( $team ) {
+    $score = 0;
+    foreach ( $team as $athlete ) {
+      $score += $athlete->tcfPointTotal;
+    }
+    return $score;
+  }
+
+  // WRITE IT! Helper function to generate team score by week
+  function score_team_one_wod ( $team, $wod ) {
+    $team_score = 0;
+    foreach ($team as $athlete) {
+      $team_score += $athlete->scores[$wod]->tcfPoints;
+    }
+    return $team_score;
+  }
+
+  // Create a return object
+  $team_scores = new stdClass();
+
+  // Add overall scores
+  $team_scores->red->overall = score_team_overall( $red_team );
+  $team_scores->blue->overall = score_team_overall( $blue_team );
+  $team_scores->green->overall = score_team_overall( $green_team );
+
+  // Add weekly scores
+  $wods = count(reset($red_team)->scores);
+  for ($i = 0; $i < $wods; $i++) {
+    $team_scores->red->wods->{$i} = score_team_one_wod( $red_team, $i );
+    $team_scores->blue->wods->{$i} = score_team_one_wod( $blue_team, $i );
+    $team_scores->green->wods->{$i} = score_team_one_wod( $green_team, $i );
+  }
+
+  return $team_scores;
+}
 
 // Register athlete info retrieval with REST API!
 // Generic route for all athletes, sorted by overall standing
@@ -201,10 +250,18 @@ add_action( 'rest_api_init', function () {
   ) );
 } );
 
-// Routes to sort by team
+// Routes to return athletes by team or gender
 add_action( 'rest_api_init', function () {
-  register_rest_route( 'tcf-athletes/v1', '/(?P<sort>\D+)', array(
+  register_rest_route( 'tcf-athletes/v1/sort', '/(?P<sort>\D+)', array(
     'methods' => 'GET',
     'callback' => 'sort_athletes',
+  ) );
+} );
+
+// Route to return team scores
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'tcf-athletes/v1', '/teams', array(
+    'methods' => 'GET',
+    'callback' => 'score_teams',
   ) );
 } );
