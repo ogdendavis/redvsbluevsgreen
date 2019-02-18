@@ -1,0 +1,1757 @@
+{
+  "47227": {
+    "entrant": {
+      "competitorId": "47227",
+      "competitorName": "Margaret Wetherbee",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12230000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100052",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10850052",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "50884": {
+    "entrant": {
+      "competitorId": "50884",
+      "competitorName": "Kari Neal",
+      "gender": "F",
+      "profilePicS3key": "ce400-P50884_5-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12750000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100151",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11550151",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "66647": {
+    "entrant": {
+      "competitorId": "66647",
+      "competitorName": "James Neal",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12010000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100066",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11650066",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "96588": {
+    "entrant": {
+      "competitorId": "96588",
+      "competitorName": "Abrie Sellers",
+      "gender": "F",
+      "profilePicS3key": "5ce67-P96588_3-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11910000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11030000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "108900": {
+    "entrant": {
+      "competitorId": "108900",
+      "competitorName": "Nicholas Sellers",
+      "gender": "M",
+      "profilePicS3key": "00ad3-P108900_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12370000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100095",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12070095",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "110387": {
+    "entrant": {
+      "competitorId": "110387",
+      "competitorName": "Wesley Brown",
+      "gender": "M",
+      "profilePicS3key": "10eec-P110387_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12920000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100238",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12550238",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "131824": {
+    "entrant": {
+      "competitorId": "131824",
+      "competitorName": "peter wolsfelt",
+      "gender": "M",
+      "profilePicS3key": "968d1-P131824_5-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12930000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100170",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12450170",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "145716": {
+    "entrant": {
+      "competitorId": "145716",
+      "competitorName": "JAIME WOLSFELT",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12280000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "170108": {
+    "entrant": {
+      "competitorId": "170108",
+      "competitorName": "David Middleton",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12040000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11040000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "182909": {
+    "entrant": {
+      "competitorId": "182909",
+      "competitorName": "Lindsay Taylor",
+      "gender": "F",
+      "profilePicS3key": "c228b-P182909_9-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11960000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100043",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10950043",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "262288": {
+    "entrant": {
+      "competitorId": "262288",
+      "competitorName": "Trinity Costner",
+      "gender": "F",
+      "profilePicS3key": "b645e-P262288_4-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12400000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100127",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11250127",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "300060": {
+    "entrant": {
+      "competitorId": "300060",
+      "competitorName": "Floyd White",
+      "gender": "M",
+      "profilePicS3key": "88048-P300060_3-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12750000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100129",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12050129",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "324345": {
+    "entrant": {
+      "competitorId": "324345",
+      "competitorName": "Chris Waters",
+      "gender": "M",
+      "profilePicS3key": "04836-P324345_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12280000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100010",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12050010",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "327442": {
+    "entrant": {
+      "competitorId": "327442",
+      "competitorName": "Robin Roberson",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11300000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100177",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "900177",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "354357": {
+    "entrant": {
+      "competitorId": "354357",
+      "competitorName": "Casey Warnock",
+      "gender": "M",
+      "profilePicS3key": "2a722-P354357_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12100000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10860000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "404218": {
+    "entrant": {
+      "competitorId": "404218",
+      "competitorName": "Stephen Gainous",
+      "gender": "M",
+      "profilePicS3key": "c9903-P404218_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12310000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11020000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "413402": {
+    "entrant": {
+      "competitorId": "413402",
+      "competitorName": "Kevin Keffer",
+      "gender": "M",
+      "profilePicS3key": "6b3a4-P413402_3-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "13640000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100325",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12270325",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "498403": {
+    "entrant": {
+      "competitorId": "498403",
+      "competitorName": "Hank Stone",
+      "gender": "M",
+      "profilePicS3key": "032ad-P498403_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12720000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100102",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12050102",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "517107": {
+    "entrant": {
+      "competitorId": "517107",
+      "competitorName": "Jessica Dubois",
+      "gender": "F",
+      "profilePicS3key": "658e9-P517107_3-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "521316": {
+    "entrant": {
+      "competitorId": "521316",
+      "competitorName": "Steve McKay",
+      "gender": "M",
+      "profilePicS3key": "f07ab-P521316_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12060000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10980000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "530374": {
+    "entrant": {
+      "competitorId": "530374",
+      "competitorName": "Emily Keffer",
+      "gender": "F",
+      "profilePicS3key": "c1288-P530374_3-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12510000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100224",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11250224",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "557118": {
+    "entrant": {
+      "competitorId": "557118",
+      "competitorName": "Patrick Scarbrough",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11970000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "559773": {
+    "entrant": {
+      "competitorId": "559773",
+      "competitorName": "Sarah Lee",
+      "gender": "F",
+      "profilePicS3key": "e3f98-P559773_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12180000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100118",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11450118",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "574431": {
+    "entrant": {
+      "competitorId": "574431",
+      "competitorName": "Frank Cienniwa",
+      "gender": "M",
+      "profilePicS3key": "c5f92-P574431_6-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2890000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100013",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1350013",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "580605": {
+    "entrant": {
+      "competitorId": "580605",
+      "competitorName": "Marc Decosta",
+      "gender": "M",
+      "profilePicS3key": "1570b-P580605_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2420000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100090",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1550090",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "662788": {
+    "entrant": {
+      "competitorId": "662788",
+      "competitorName": "Kristen Swan",
+      "gender": "F",
+      "profilePicS3key": "cbe3c-P662788_3-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12580000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100231",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11420231",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "665310": {
+    "entrant": {
+      "competitorId": "665310",
+      "competitorName": "Conner Sadler",
+      "gender": "M",
+      "profilePicS3key": "715c6-P665310_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12660000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100319",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12370319",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "731205": {
+    "entrant": {
+      "competitorId": "731205",
+      "competitorName": "Leslie Strickland",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11270000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10690000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "738293": {
+    "entrant": {
+      "competitorId": "738293",
+      "competitorName": "Elli Stone",
+      "gender": "F",
+      "profilePicS3key": "727e8-P738293_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12170000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100105",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11450105",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "738859": {
+    "entrant": {
+      "competitorId": "738859",
+      "competitorName": "Adam Swan",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11510000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10970000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "781668": {
+    "entrant": {
+      "competitorId": "781668",
+      "competitorName": "Matt Shiner",
+      "gender": "M",
+      "profilePicS3key": "ebe3a-P781668_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12260000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11010000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "796546": {
+    "entrant": {
+      "competitorId": "796546",
+      "competitorName": "Reid Turner",
+      "gender": "M",
+      "profilePicS3key": "feed2-P796546_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12560000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100082",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11850082",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "814450": {
+    "entrant": {
+      "competitorId": "814450",
+      "competitorName": "Randy Watts",
+      "gender": "M",
+      "profilePicS3key": "7a585-P814450_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2840000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "908366": {
+    "entrant": {
+      "competitorId": "908366",
+      "competitorName": "Maura Shiner",
+      "gender": "F",
+      "profilePicS3key": "a3a82-P908366_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12180000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100062",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11350062",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "913881": {
+    "entrant": {
+      "competitorId": "913881",
+      "competitorName": "Kelly Shiner",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "10040000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100172",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100172",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "924366": {
+    "entrant": {
+      "competitorId": "924366",
+      "competitorName": "Raymond Patterson",
+      "gender": "M",
+      "profilePicS3key": "25009-P924366_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12950000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100202",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12450202",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "931856": {
+    "entrant": {
+      "competitorId": "931856",
+      "competitorName": "Wesley Gillis",
+      "gender": "M",
+      "profilePicS3key": "4d904-P931856_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12560000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100130",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11850130",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "932950": {
+    "entrant": {
+      "competitorId": "932950",
+      "competitorName": "Gina-Marie Rollock",
+      "gender": "F",
+      "profilePicS3key": "e53b1-P932950_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2590000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100066",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "700066",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "934106": {
+    "entrant": {
+      "competitorId": "934106",
+      "competitorName": "Brian Rollock",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11990000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10720000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "944486": {
+    "entrant": {
+      "competitorId": "944486",
+      "competitorName": "Mackenzie Wirick",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11260000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100075",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11150075",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "959720": {
+    "entrant": {
+      "competitorId": "959720",
+      "competitorName": "Kristi Bulot",
+      "gender": "F",
+      "profilePicS3key": "00b2a-P959720_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2580000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11090000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1012382": {
+    "entrant": {
+      "competitorId": "1012382",
+      "competitorName": "Trisha Glaccum",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2570000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100047",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "950047",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1036743": {
+    "entrant": {
+      "competitorId": "1036743",
+      "competitorName": "Huey Calhoun",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12280000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100138",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12250138",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1092875": {
+    "entrant": {
+      "competitorId": "1092875",
+      "competitorName": "Brianna Doughty",
+      "gender": "F",
+      "profilePicS3key": "47b2d-P1092875_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12100000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100196",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11370196",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1167840": {
+    "entrant": {
+      "competitorId": "1167840",
+      "competitorName": "Joey Dennard",
+      "gender": "M",
+      "profilePicS3key": "3a0c5-P1167840_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12290000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100088",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12150088",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1185747": {
+    "entrant": {
+      "competitorId": "1185747",
+      "competitorName": "Brian Gibson",
+      "gender": "M",
+      "profilePicS3key": "9c8aa-P1185747_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12410000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100086",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11850086",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1189332": {
+    "entrant": {
+      "competitorId": "1189332",
+      "competitorName": "Nathan Gibson",
+      "gender": "M",
+      "profilePicS3key": "e8031-P1189332_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2390000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1190969": {
+    "entrant": {
+      "competitorId": "1190969",
+      "competitorName": "Christian Gibson",
+      "gender": "M",
+      "profilePicS3key": "b482d-P1190969_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11630000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1207039": {
+    "entrant": {
+      "competitorId": "1207039",
+      "competitorName": "Linn\\u00e9a Roivas",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11810000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1210557": {
+    "entrant": {
+      "competitorId": "1210557",
+      "competitorName": "Martin Slusher",
+      "gender": "M",
+      "profilePicS3key": "6510f-P1210557_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11590000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10760000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1210751": {
+    "entrant": {
+      "competitorId": "1210751",
+      "competitorName": "Chelsey Slusher",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100144",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1150144",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1266833": {
+    "entrant": {
+      "competitorId": "1266833",
+      "competitorName": "Kevin Smith",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12080000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100181",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1850181",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1269102": {
+    "entrant": {
+      "competitorId": "1269102",
+      "competitorName": "Morgan Garcia",
+      "gender": "M",
+      "profilePicS3key": "07250-P1269102_2-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12880000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100121",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12450121",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1294483": {
+    "entrant": {
+      "competitorId": "1294483",
+      "competitorName": "Von Stripling",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "13580000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100308",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11870308",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1297587": {
+    "entrant": {
+      "competitorId": "1297587",
+      "competitorName": "Candice Smith",
+      "gender": "F",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2580000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100080",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "800080",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1297646": {
+    "entrant": {
+      "competitorId": "1297646",
+      "competitorName": "Jared Smith",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12570000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100280",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12300280",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1299276": {
+    "entrant": {
+      "competitorId": "1299276",
+      "competitorName": "Christian Pyle",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12170000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100193",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11850193",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1301484": {
+    "entrant": {
+      "competitorId": "1301484",
+      "competitorName": "Bobby Miller",
+      "gender": "M",
+      "profilePicS3key": "a3dc9-P1301484_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11440000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100187",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1450187",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1304621": {
+    "entrant": {
+      "competitorId": "1304621",
+      "competitorName": "Joseph Souders",
+      "gender": "M",
+      "profilePicS3key": "0db64-P1304621_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12310000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100218",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11900218",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1305504": {
+    "entrant": {
+      "competitorId": "1305504",
+      "competitorName": "Marcus Tucker",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11930000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10560000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "10000000",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1308980": {
+    "entrant": {
+      "competitorId": "1308980",
+      "competitorName": "Caleb Miller",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "11040000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "840000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1312258": {
+    "entrant": {
+      "competitorId": "1312258",
+      "competitorName": "Meggin Nix",
+      "gender": "F",
+      "profilePicS3key": "e696b-P1312258_1-184.jpg",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2280000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100219",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "750219",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1315183": {
+    "entrant": {
+      "competitorId": "1315183",
+      "competitorName": "Brodie McKinney",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "12190000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1100100",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "1750100",
+        "scaled": "1",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1333866": {
+    "entrant": {
+      "competitorId": "1333866",
+      "competitorName": "Christian Quinones",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "13240000",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "11100220",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "12350220",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  },
+  "1354871": {
+    "entrant": {
+      "competitorId": "1354871",
+      "competitorName": "Kevin Thomas",
+      "gender": "M",
+      "profilePicS3key": "pukie.png",
+      "team": ""
+    },
+    "scores": [
+      {
+        "score": "2560000",
+        "scaled": "1",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      },
+      {
+        "score": "0",
+        "scaled": "0",
+        "tcfPoints": 0
+      }
+    ],
+    "tcfPointTotal": 0
+  }
+}

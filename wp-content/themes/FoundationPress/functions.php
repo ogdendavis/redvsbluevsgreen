@@ -68,43 +68,46 @@ if ( function_exists('register_sidebar') )
   )
 );
 
-// Function to get leaderboard data from games site and append team info
-function get_athletes() {
-  /*
-   * This whole thing uses 2018 data (for now). Update it once the Open
-   * officially starts!
-  */
+// Helper function to pull data from stored JSON object
+// JSON object was created with functions in legacy-functions.php
+function get_local_leaderboard( $year ) {
+  // Refer to webroot/assets/json for data structure
+  $path = ABSPATH . '/assets/json/rvbvg' . $year . '.json';
+  $leaderboard = json_decode( file_get_contents( $path ) );
+  return $leaderboard;
+}
 
-  // Hard-code IDs of athletes by team
-  $red_team_ids = array("413402", "131824", "1297646", "931856", "1304621", "1167840", "404218", "521316", "1266833", "530374", "738293", "182909", "145716", "96588", "959720", "1312258", "1012382");
-  $blue_team_ids = array("1294483", "110387", "1269102", "108900", "796546", "1333866", "324345", "170108", "781668", "50884", "262288", "908366", "47227", "731205", "1207039", "1210751", "1297587");
-  $green_team_ids = array("665310", "665310", "498403", "300060", "1036743", "1185747", "1299276", "66647", "354357", "662788", "559773", "1092875", "944486", "517107", "913881", "327442", "932950");
+// Helper function to pull raw data from games site
+function get_games_leaderboard( $year ) {
+  // Have to pull by gender, because that's how the games site does it
+  $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/' . $year . '/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+  $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/' . $year . '/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
 
-  // Fetch live men's & women's leaderboards from games.crossfit.com
-  $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
-  $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
-
-  // Put all athletes into one big array!
+  // Put all athletes into one big array, and return it
   $all_athletes = array_merge($all_men, $all_women);
+  return $all_athletes;
+}
 
-  // Compute custom score for gender-combined leaderboard
-  $scored_athletes = score_athletes($all_athletes);
+// Function to pull data from games site and use it to add scores to local leaderboard
+// CAUTION: Will overwrite scores alread in stored local JSON object
+// This function will NOT add new athletes
+function import_games_leaderboard_wod( $year, $wodindex ) {
+  // $year is the year of the open (leaderboards exist for 2018 and 2019)
+  // $wodindex is the index of the wod in the athlete object, zero-indexed
+  // For example, to update 18.1, you'd run update_leaderboard( 2018, 0 );
 
-  // Add team indicator to each entrant
-  foreach($all_athletes as $athlete) {
-    if( in_array($athlete->entrant->competitorId, $red_team_ids) ) {
-      $athlete->entrant->team = 'red';
-    }
-    elseif( in_array($athlete->entrant->competitorId, $blue_team_ids) ) {
-      $athlete->entrant->team = 'blue';
-    }
-    elseif( in_array($athlete->entrant->competitorId, $green_team_ids) ) {
-      $athlete->entrant->team = 'green';
+  // Get local leaderboard to modify
+  $local_leaderboard = get_local_leaderboard( $year );
+  // Get games leaderboard for data
+  $games_leaderboard = get_games_leaderboard( $year );
+
+  foreach ($games_leaderboard as $games_athlete) {
+    // We used competitorId to set athlete index in local JSON object
+    $id = $games_athlete->entrant->competitorId;
+    if ( isset( $local_leaderboard->{$id} ) ) {
+      $local_leaderboard->{$id}->scores[$wodindex]->score = $games_athlete->scores[$wodindex]->score;
     }
   }
-
-  // Return all athletes, with teams appended
-  return $all_athletes;
 }
 
 // Function to calculate custom tcf scrore for athletes!
@@ -242,14 +245,6 @@ function score_teams() {
 }
 
 // Register athlete info retrieval with REST API!
-// Generic route for all athletes, sorted by overall standing
-add_action( 'rest_api_init', function () {
-  register_rest_route( 'tcf-athletes/v1', '/all', array(
-    'methods' => 'GET',
-    'callback' => 'get_athletes',
-  ) );
-} );
-
 // Routes to return athletes by team or gender
 add_action( 'rest_api_init', function () {
   register_rest_route( 'tcf-athletes/v1/sort', '/(?P<sort>\D+)', array(
