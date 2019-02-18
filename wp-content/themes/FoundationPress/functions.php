@@ -91,10 +91,12 @@ function get_games_leaderboard( $year ) {
 // Function to pull data from games site and use it to add scores to local leaderboard
 // CAUTION: Will overwrite scores alread in stored local JSON object
 // This function will NOT add new athletes
-function import_games_leaderboard_wod( $year, $wodindex ) {
+function import_games_leaderboard_wod( $request ) {
   // $year is the year of the open (leaderboards exist for 2018 and 2019)
+  $year = $request['year'];
   // $wodindex is the index of the wod in the athlete object, zero-indexed
   // For example, to update 18.1, you'd run update_leaderboard( 2018, 0 );
+  $wodindex = $request['wodindex'];
 
   // Get local leaderboard to modify
   $local_leaderboard = get_local_leaderboard( $year );
@@ -108,9 +110,17 @@ function import_games_leaderboard_wod( $year, $wodindex ) {
       $local_leaderboard->{$id}->scores[$wodindex]->score = $games_athlete->scores[$wodindex]->score;
     }
   }
+
+  // Write the updates to a JSON object
+  $jsonObject = json_encode($local_leaderboard);
+  // Get the path for where to store the object, and write it!
+  $local_path = ABSPATH . '/assets/json/rvbvg' . $year . '.json';
+  file_put_contents($local_path, $jsonObject);
+
+  return 'Updated WOD with index ' . $wodindex . ' from ' . $year . '.';
 }
 
-// Function to calculate custom tcf scrore for athletes!
+// Helper function to calculate custom tcf scrore for athletes!
 function score_athletes( &$athletes ) {
   // Counting the number of wod scores on the first athlete, assuming that it
   // will be the same for all athletes
@@ -258,5 +268,13 @@ add_action( 'rest_api_init', function () {
   register_rest_route( 'tcf-athletes/v1', '/teams', array(
     'methods' => 'GET',
     'callback' => 'score_teams',
+  ) );
+} );
+
+// Route to cause local leaderboard to update with info for one WOD from games site
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'tcf-athletes/v1', '/update-wod/(?P<year>\d+)/(?P<wodindex>\d)', array(
+    'methods' => 'GET',
+    'callback' => 'import_games_leaderboard_wod',
   ) );
 } );
