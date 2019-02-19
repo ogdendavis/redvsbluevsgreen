@@ -15,6 +15,7 @@
 
 get_header(); ?>
 
+<!-- index.php -->
 <div class="main-container">
 	<div class="main-grid">
 		<main class="main-content">

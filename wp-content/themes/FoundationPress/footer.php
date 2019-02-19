@@ -8,7 +8,7 @@
  * @since FoundationPress 1.0.0
  */
 ?>
-
+<!-- footer.php -->
 <footer class="footer">
   <?php if ( current_user_can('administrator') ) : ?>
     <script>
