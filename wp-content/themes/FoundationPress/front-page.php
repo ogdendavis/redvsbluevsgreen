@@ -28,38 +28,62 @@
           // var_dump($response);
         ?>
 
-        <style>
-          td {
-            border-bottom: 1px solid #222;
-          }
-        </style>
-        <table>
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td>18.1 score</td>
-              <td>18.1 rank</td>
-              <td>tcfPoints</td>
-              <td>gender rank</td>
-              <td>tcfPointTotal</td>
-            </tr>
-          </thead>
-          <tbody>
-          <?php
-            foreach ($response->data as $athlete) {
-              echo '<tr>';
-              echo '<td>' . $athlete->entrant->competitorName . '</td>';
-              echo '<td>' . $athlete->scores[0]->score . '</td>';
-              echo '<td>' . $athlete->scores[0]->rank . '</td>';
-              echo '<td>' . $athlete->scores[0]->tcfPoints . '</td>';
-              echo '<td>' . $athlete->overallRank . '</td>';
-              echo '<td>' . $athlete->tcfPointTotal . '</td>';
-              echo '</tr>';
-            }
-          ?>
-          </tbody>
-        </table>
-      </div>
+        <?php // Top-level tabs ?>
+        <ul class="tabs" data-tabs id="leaderboard-tabs">
+          <li class="tabs-title is-active">
+            <a href="#teamScores" aria-selected="true">Teams</a>
+          </li>
+          <li class="tabs-title">
+            <a href="#individualScores" aria-selected="false">Individuals</a>
+          </li>
+        </ul>
+
+        <?php // Tab content, including sub-tabs ?>
+        <div class="tabs-content" data-tabs-content="leaderboard-tabs">
+
+          <div class="tabs-panel is-active" id="teamScores">
+
+            <p>This is where the team leaderboard will go!</p>
+
+          </div>
+
+          <div class="tabs-panel no-padding" id="individualScores">
+
+            <?php // The sub-tablist should be identical for teams and individuals, except for ids ?>
+
+            <div class="cell medium-3">
+              <ul class="tabs" data-tabs id="individual-leaderboard">
+                <li class="tabs-title is-active">
+                  <a href="#individual-overall-leaderboard" aria-selected="true">Overall</a>
+                </li>
+                <li class="tabs-title">
+                  <a href="#individual-women-leaderboard" aria-selected="false">Women</a>
+                </li>
+                <li class="tabs-title">
+                  <a href="#individual-men-leaderboard" aria-selected="false">Men</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="cell medium-9">
+              <div class="tabs-content" data-tabs-content="individual-leaderboard">
+                <div class="tabs-panel is-active" id="individual-overall-leaderboard">
+                  <p>This is the mixed-gender leaderboard!</p>
+                </div>
+                <div class="tabs-panel" id="individual-women-leaderboard">
+                  <p>This is the women's leaderboard!</p>
+                </div>
+                <div class="tabs-panel" id="individual-men-leaderboard">
+                  <p>This is the men's leaderboard!</p>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- tabs-panel -->
+
+        </div><!-- tabs-content -->
+
+      </div> <!-- .standings -->
 
       <div class="analysis">
         <?php
