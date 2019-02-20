@@ -14,6 +14,7 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:400,700" rel="stylesheet">
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
@@ -22,29 +23,18 @@
 		<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>
 	<?php endif; ?>
 
-	<header class="site-header" role="banner">
-		<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
-			<div class="title-bar-left">
-				<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
-				<span class="site-mobile-title title-bar-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-				</span>
-			</div>
-		</div>
-
-		<nav class="site-navigation top-bar" role="navigation">
-			<div class="top-bar-left">
-				<div class="site-desktop-title top-bar-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+	<header class="tcfopen-site-header" role="banner">
+		<div class="grid-container">
+	    <div class="grid-x grid-margin-x">
+				<div class="header-title cell shrink">
+					<h1><a href="<?php echo site_url(); ?>">TCF<span class="light-header">Open</span></a></h1>
+				</div>
+				<div class="cell auto header-team-icons">
+					<img class="team-icon" src="<?php echo site_url('/assets/red-team-wings-302x96.png'); ?>" alt="Red Team Shield">
+					<img class="team-icon" src="<?php echo site_url('/assets/blue-team-wings-302x96.png'); ?>" alt="Blue Team Shield">
+					<img class="team-icon" src="<?php echo site_url('/assets/green-team-wings-302x96.png'); ?>" alt="Green Team Shield">
 				</div>
 			</div>
-			<div class="top-bar-right">
-				<?php foundationpress_top_bar_r(); ?>
-
-				<?php if ( ! get_theme_mod( 'wpt_mobile_menu_layout' ) || get_theme_mod( 'wpt_mobile_menu_layout' ) === 'topbar' ) : ?>
-					<?php get_template_part( 'template-parts/mobile-top-bar' ); ?>
-				<?php endif; ?>
-			</div>
-		</nav>
+		</div>
 
 	</header>

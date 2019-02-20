@@ -23,7 +23,7 @@
   // var_dump($response);
 ?>
 
-<main>
+<main class="tcfopen-main">
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
 
@@ -83,14 +83,14 @@
         </div><!-- tabs-content -->
       </div><!-- leaderboard-container -->
 
-      <div class="cell medium-4 small-12 analysis-container">
-        <?php
-          $args = array('numberposts' => 1);
-          $post = get_posts($args)[0];
-          echo '<div class="analysis_title">' . $post->post_title . '</div>';
-          echo '<div class="analysis__excerpt">' . wp_trim_words($post->post_content, 55, '<a class="analysis__more-link" href="' . $post->guid . '"> &hellip;(read more)</a>') . '</div>';
-        ?>
-      </div>
+      <?php
+        $args = array('numberposts' => 1);
+        $post = get_posts($args)[0];
+        echo '<div class="cell medium-4 small-12 analysis__container" onclick="window.location=\'' . $post->guid . '\'">';
+        echo '<div class="analysis__title">' . $post->post_title . '</div>';
+        echo '<div class="analysis__excerpt">' . wp_trim_words($post->post_content, 55, '&hellip; <a class="analysis__more-link" href="' . $post->guid . '">(read more)</a>') . '</div>';
+        echo '</div>';
+      ?>
 
       <div class="cell small-12 images">
         <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Front Page Bottom') ) : ?>
