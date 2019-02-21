@@ -27,7 +27,7 @@
 		<div class="grid-container">
 	    <div class="grid-x grid-margin-x">
 				<div class="header-title cell shrink">
-					<h1><a href="<?php echo site_url(); ?>">TCF<span class="light-header">Open</span></a></h1>
+					<h1><a href="<?php echo site_url(); ?>">TCF<span class="light-header">Open</span>2019</a></h1>
 				</div>
 				<div class="cell auto header-team-icons">
 					<img class="team-icon" src="<?php echo site_url('/site-assets/red-team-wings-302x96.png'); ?>" alt="Red Team Shield">
