@@ -30,9 +30,9 @@
 					<h1><a href="<?php echo site_url(); ?>">TCF<span class="light-header">Open</span></a></h1>
 				</div>
 				<div class="cell auto header-team-icons">
-					<img class="team-icon" src="<?php echo site_url('/assets/red-team-wings-302x96.png'); ?>" alt="Red Team Shield">
-					<img class="team-icon" src="<?php echo site_url('/assets/blue-team-wings-302x96.png'); ?>" alt="Blue Team Shield">
-					<img class="team-icon" src="<?php echo site_url('/assets/green-team-wings-302x96.png'); ?>" alt="Green Team Shield">
+					<img class="team-icon" src="<?php echo site_url('/site-assets/red-team-wings-302x96.png'); ?>" alt="Red Team Shield">
+					<img class="team-icon" src="<?php echo site_url('/site-assets/blue-team-wings-302x96.png'); ?>" alt="Blue Team Shield">
+					<img class="team-icon" src="<?php echo site_url('/site-assets/green-team-wings-302x96.png'); ?>" alt="Green Team Shield">
 				</div>
 			</div>
 		</div>
