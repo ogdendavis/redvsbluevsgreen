@@ -1,0 +1,38 @@
+// Styles for the leaderboard!
+
+// Utility style to get rid of padding -- move to a more general sheet?
+.no-padding {
+  padding: 0;
+}
+
+// <main> container
+.tcfopen-main {
+  margin-top: 2rem;
+}
+
+.analysis__container {
+  background: $tcf-web-blue;
+  padding: 0.5rem 1rem;
+  box-shadow: $box-shadow;
+  transition: box-shadow $transition;
+
+  .analysis__title {
+    @extend h3;
+  }
+
+  a {
+    color: $white;
+    transition: color $transition;
+    &:hover {
+      color: white;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: $box-shadow-hover;
+    a {
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.sidebar {
+  background: $tcf-web-blue;
+  padding: 1rem;
+  box-shadow: $box-shadow;
+
+  .button {
+    background: $dark-nav-color;
+  }
+
+  a {
+    color: $white;
+    font-weight: 700;
+    transition: color $transition;
+    &:hover {
+      color: white;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+}

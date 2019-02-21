@@ -1,0 +1,45 @@
+.tcfopen-site-header {
+  background: $dark-nav-color;
+  padding: 0.5rem;
+  height: 90px;
+
+  * {
+    transition: color $transition;
+  }
+
+  h1 {
+    color: $white;
+    font-weight:bold;
+  }
+
+  h1 a {
+    color: inherit;
+    &:hover {
+      color: $tcf-web-blue;
+
+      .light-header {
+        color: $white;
+      }
+    }
+  }
+}
+
+.light-header {
+  font-weight: 100;
+  color: $tcf-web-blue;
+}
+
+.header-title {
+  text-align: center;
+}
+
+.header-team-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  .team-icon {
+    height: 48px;
+  }
+}
