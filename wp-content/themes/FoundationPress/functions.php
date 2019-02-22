@@ -78,6 +78,15 @@ function get_current_local_leaderboard() {
   return $leaderboard;
 }
 
+// Helper function to write data to stored JSON object
+// Takes a php variable representing the full leaderboard
+function write_to_local_leaderboard( $leaderboard_variable ) {
+  $jsonObject = json_encode($leaderboard_variable);
+  // Get the path for where to store the object, and write it!
+  $local_path = ABSPATH . 'site-assets/json/rvbvg2018.json';
+  file_put_contents($local_path, $jsonObject);
+}
+
 // Helper function to pull raw data from games site
 function get_current_games_leaderboard() {
 
@@ -107,22 +116,28 @@ function get_wod_scores_from_games_site() {
     // We used competitorId to set athlete index in local JSON object
     $id = $games_athlete->entrant->competitorId;
 
-    // Go through games leaderboard, and for each athlete who's in the
-    foreach ($games_athlete->scores as $athlete_record) {
-      $wod = $athlete_record->ordinal;
-      if ( isset( $local_leaderboard->{$id} ) && !isset( $local_leaderboard->{$id}->scores[$wod]->score ) ) {
-        $local_leaderboard->{$id}->scores[$wod]->score = $games_athlete->scores[$wod]->score;
-        $updated_records += 1;
+    // Check that the athlete is in the local leaderboard first
+    if ( isset( $local_leaderboard->{$id} ) ) {
+      $scores = $games_athlete->scores;
+
+      // Go through the score object for each WOD for this athlete
+      foreach ($scores as $athlete_record) {
+        // Get the ordinal from the score
+        $wod = $athlete_record->ordinal;
+
+        // Check that the that athlete doesn't already have a score for that WOD, and that there is a score in the games leaderboard
+        if ( !isset( $local_leaderboard->{$id}->scores[$wod]->score ) && isset( $scores[$wod]->score ) ) {
+          $local_leaderboard->{$id}->scores[$wod]->score = $scores[$wod]->score;
+          $updated_records += 1;
+        }
       }
     }
   }
 
-  // Write the updates to a JSON object
-  $jsonObject = json_encode($local_leaderboard);
-  // Get the path for where to store the object, and write it!
-  $local_path = ABSPATH . 'site-assets/json/rvbvg2018.json';
-  file_put_contents($local_path, $jsonObject);
+  // Update (write-over) the local JSON leaderboard
+  write_to_local_leaderboard( $local_leaderboard );
 
+  // Return to validate success in browser
   return 'Updated ' . $updated_records . ' records in local leaderboard';
 }
 
@@ -166,7 +181,14 @@ function score_athletes( &$athletes ) {
   return $athletes;
 }
 
+function score_local_leaderboard() {
+  $local_leaderboard = get_current_local_leaderboard();
+  $scored_local_leaderboard = score_athletes( $local_leaderboard );
+  return score_local_leaderboard();
+}
+
 // Function to sort athletes and return only the requested ones (by team or gender)
+// This function tries to do too much! Parse it out into a helper function that sorts, and then an endpoint function that updates scores
 function sort_athletes( $request ) {
   // Get athletes!
   $athletes = get_athletes();
