@@ -26,10 +26,10 @@
 	<header class="tcfopen-site-header" role="banner">
 		<div class="grid-container">
 	    <div class="grid-x grid-margin-x">
-				<div class="header-title cell shrink">
+				<div class="header-title cell medium-shrink">
 					<h1><a href="<?php echo site_url(); ?>">TCF<span class="light-header">Open</span>2019</a></h1>
 				</div>
-				<div class="cell auto header-team-icons">
+				<div class="cell medium-auto header-team-icons">
 					<img class="team-icon" src="<?php echo site_url('/site-assets/red-team-wings-302x96.png'); ?>" alt="Red Team Shield">
 					<img class="team-icon" src="<?php echo site_url('/site-assets/blue-team-wings-302x96.png'); ?>" alt="Blue Team Shield">
 					<img class="team-icon" src="<?php echo site_url('/site-assets/green-team-wings-302x96.png'); ?>" alt="Green Team Shield">
