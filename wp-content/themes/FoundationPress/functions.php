@@ -141,7 +141,7 @@ function get_wod_scores_from_games_site() {
   return 'Updated ' . $updated_records . ' records in local leaderboard';
 }
 
-// Helper function to calculate custom tcf scrore for athletes!
+// Helper function to calculate custom tcf score for athletes! Lower is better.
 function score_athletes( &$athletes ) {
   // Counting the number of wod scores on the first athlete, assuming that it
   // will be the same for all athletes
@@ -189,10 +189,10 @@ function score_local_leaderboard() {
 }
 
 // Function to sort athletes and return only the requested ones (by team or gender)
-// This function tries to do too much! Parse it out into a helper function that sorts, and then an endpoint function that updates scores
+// Takes a string, and returns a subset of the leaderboard that fits the parameter
 function sort_athletes( $request ) {
   // Get athletes!
-  $athletes = get_athletes();
+  $athletes = get_current_local_leaderboard();
 
   // Figure out how we'll sort them
   switch ($request['sort']) {
@@ -226,11 +226,8 @@ function sort_athletes( $request ) {
     return ($athlete->entrant->{$filter_field} === $filter_value);
   });
 
-  // Sort by group ranking -- lower points is better
-  $scored_result = score_athletes($result);
-
   // And return!
-  return $scored_result;
+  return $result;
 }
 
 // Function to calculate total team score
