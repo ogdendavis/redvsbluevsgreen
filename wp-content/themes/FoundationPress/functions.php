@@ -184,7 +184,8 @@ function score_athletes( &$athletes ) {
 function score_local_leaderboard() {
   $local_leaderboard = get_current_local_leaderboard();
   $scored_local_leaderboard = score_athletes( $local_leaderboard );
-  return score_local_leaderboard();
+  write_to_local_leaderboard( $scored_local_leaderboard );
+  return 'Scored athletes!';
 }
 
 // Function to sort athletes and return only the requested ones (by team or gender)
@@ -284,25 +285,34 @@ function score_teams() {
 
 // Register athlete info retrieval with REST API!
 // Routes to return athletes by team or gender
-add_action( 'rest_api_init', function () {
-  register_rest_route( 'tcf-athletes/v1/sort', '/(?P<sort>\D+)', array(
-    'methods' => 'GET',
-    'callback' => 'sort_athletes',
-  ) );
-} );
 
-// Route to return team scores
-add_action( 'rest_api_init', function () {
-  register_rest_route( 'tcf-athletes/v1', '/teams', array(
-    'methods' => 'GET',
-    'callback' => 'score_teams',
-  ) );
-} );
+// add_action( 'rest_api_init', function () {
+//   register_rest_route( 'tcf-athletes/v1/sort', '/(?P<sort>\D+)', array(
+//     'methods' => 'GET',
+//     'callback' => 'sort_athletes',
+//   ) );
+// } );
+//
+// // Route to return team scores
+// add_action( 'rest_api_init', function () {
+//   register_rest_route( 'tcf-athletes/v1', '/teams', array(
+//     'methods' => 'GET',
+//     'callback' => 'score_teams',
+//   ) );
+// } );
 
 // Route to cause local leaderboard to update with info for one WOD from games site
 add_action( 'rest_api_init', function () {
   register_rest_route( 'tcf-athletes/v1', '/get-wod-scores-now', array(
     'methods' => 'GET',
     'callback' => 'get_wod_scores_from_games_site',
+  ) );
+} );
+
+// Route to create tcf Points for athletes in local leaderboard
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'tcf-athletes/v1', '/score-athletes-now', array(
+    'methods' => 'GET',
+    'callback' => 'score_local_leaderboard',
   ) );
 } );

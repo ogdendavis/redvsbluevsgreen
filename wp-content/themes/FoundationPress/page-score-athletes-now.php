@@ -1,6 +1,8 @@
 <?php
 /**
- * Template for webhook page to get WOD scores from games.crossfit.com
+ * Template for webhook page to score athletes in local leaderboard.
+ * Will use raw games.crossfit.com scores in local leaderboard to create custom
+ * tcfPoints score for use in in-house competition
  *
  * @package FoundationPress
  * @since FoundationPress 1.0.0
@@ -16,12 +18,12 @@ get_header(); ?>
 		<?php if ( current_user_can('administrator') ) : ?>
 
 			<?php
-			$request = new WP_REST_Request( 'GET', '/tcf-athletes/v1/get-wod-scores-now' );
+			$request = new WP_REST_Request( 'GET', '/tcf-athletes/v1/score-athletes-now' );
 			$response = rest_do_request($request);
 			?>
 
 			<div class="webhook webhook--response">
-				Sent request to update local leaderboard with info from games.crossfit.com.<br>
+				Sent request to score athletes by in-house ranking.<br>
 				Response:<br>
 				<br>
 				<?php var_dump($response); ?>
