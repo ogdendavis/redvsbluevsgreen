@@ -70,18 +70,20 @@ if ( function_exists('register_sidebar') )
 
 // Helper function to pull data from stored JSON object
 // JSON object was created with functions in legacy-functions.php
-function get_local_leaderboard( $year ) {
-  // Refer to webroot/assets/json for data structure
-  $path = ABSPATH . '/assets/json/rvbvg' . $year . '.json';
+function get_current_local_leaderboard() {
+
+  // Refer to webroot/site-assets/json for data structure
+  $path = ABSPATH . 'site-assets/json/rvbvg2018.json';
   $leaderboard = json_decode( file_get_contents( $path ) );
   return $leaderboard;
 }
 
 // Helper function to pull raw data from games site
-function get_games_leaderboard( $year ) {
+function get_current_games_leaderboard() {
+
   // Have to pull by gender, because that's how the games site does it
-  $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/' . $year . '/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
-  $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/' . $year . '/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+  $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+  $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
 
   // Put all athletes into one big array, and return it
   $all_athletes = array_merge($all_men, $all_women);
@@ -89,35 +91,39 @@ function get_games_leaderboard( $year ) {
 }
 
 // Function to pull data from games site and use it to add scores to local leaderboard
-// CAUTION: Will overwrite scores alread in stored local JSON object
+// This will NOT override scores already in local JSON object
 // This function will NOT add new athletes
-function import_games_leaderboard_wod( $request ) {
-  // $year is the year of the open (leaderboards exist for 2018 and 2019)
-  $year = $request['year'];
-  // $wodindex is the index of the wod in the athlete object, zero-indexed
-  // For example, to update 18.1, you'd run update_leaderboard( 2018, 0 );
-  $wodindex = $request['wodindex'];
+// To import all new info, use JSON object creation function (name?!)
+// Edits or updates to single WOD scores should be manually done in the JSON object
+function get_wod_scores_from_games_site() {
 
   // Get local leaderboard to modify
-  $local_leaderboard = get_local_leaderboard( $year );
+  $local_leaderboard = get_current_local_leaderboard();
   // Get games leaderboard for data
-  $games_leaderboard = get_games_leaderboard( $year );
+  $games_leaderboard = get_current_games_leaderboard();
 
+  $updated_records = 0;
   foreach ($games_leaderboard as $games_athlete) {
     // We used competitorId to set athlete index in local JSON object
     $id = $games_athlete->entrant->competitorId;
-    if ( isset( $local_leaderboard->{$id} ) ) {
-      $local_leaderboard->{$id}->scores[$wodindex]->score = $games_athlete->scores[$wodindex]->score;
+
+    // Go through games leaderboard, and for each athlete who's in the
+    foreach ($games_athlete->scores as $athlete_record) {
+      $wod = $athlete_record->ordinal;
+      if ( isset( $local_leaderboard->{$id} ) && !isset( $local_leaderboard->{$id}->scores[$wod]->score ) ) {
+        $local_leaderboard->{$id}->scores[$wod]->score = $games_athlete->scores[$wod]->score;
+        $updated_records += 1;
+      }
     }
   }
 
   // Write the updates to a JSON object
   $jsonObject = json_encode($local_leaderboard);
   // Get the path for where to store the object, and write it!
-  $local_path = ABSPATH . '/assets/json/rvbvg' . $year . '.json';
+  $local_path = ABSPATH . 'site-assets/json/rvbvg2018.json';
   file_put_contents($local_path, $jsonObject);
 
-  return 'Updated WOD with index ' . $wodindex . ' from ' . $year . '.';
+  return 'Updated ' . $updated_records . ' records in local leaderboard';
 }
 
 // Helper function to calculate custom tcf scrore for athletes!
@@ -273,8 +279,8 @@ add_action( 'rest_api_init', function () {
 
 // Route to cause local leaderboard to update with info for one WOD from games site
 add_action( 'rest_api_init', function () {
-  register_rest_route( 'tcf-athletes/v1', '/update-wod/(?P<year>\d+)/(?P<wodindex>\d)', array(
+  register_rest_route( 'tcf-athletes/v1', '/get-wod-scores-now', array(
     'methods' => 'GET',
-    'callback' => 'import_games_leaderboard_wod',
+    'callback' => 'get_wod_scores_from_games_site',
   ) );
 } );

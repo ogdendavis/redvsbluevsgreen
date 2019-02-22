@@ -119,3 +119,35 @@
      'callback' => 'get_athletes',
    ) );
  } );
+
+ // Function to pull data from games site and use it to add scores to local leaderboard
+ // CAUTION: Will overwrite scores alread in stored local JSON object
+ // This function will NOT add new athletes
+ function import_games_leaderboard_wod( $request ) {
+   // $year is the year of the open (leaderboards exist for 2018 and 2019)
+   $year = $request['year'];
+   // $wodindex is the index of the wod in the athlete object, zero-indexed
+   // For example, to update 18.1, you'd run update_leaderboard( 2018, 0 );
+   $wodindex = $request['wodindex'];
+
+   // Get local leaderboard to modify
+   $local_leaderboard = get_local_leaderboard( $year );
+   // Get games leaderboard for data
+   $games_leaderboard = get_games_leaderboard( $year );
+
+   foreach ($games_leaderboard as $games_athlete) {
+     // We used competitorId to set athlete index in local JSON object
+     $id = $games_athlete->entrant->competitorId;
+     if ( isset( $local_leaderboard->{$id} ) ) {
+       $local_leaderboard->{$id}->scores[$wodindex]->score = $games_athlete->scores[$wodindex]->score;
+     }
+   }
+
+   // Write the updates to a JSON object
+   $jsonObject = json_encode($local_leaderboard);
+   // Get the path for where to store the object, and write it!
+   $local_path = ABSPATH . '/assets/json/rvbvg' . $year . '.json';
+   file_put_contents($local_path, $jsonObject);
+
+   return 'Updated WOD with index ' . $wodindex . ' from ' . $year . '.';
+ }

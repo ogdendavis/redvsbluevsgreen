@@ -1,0 +1,25 @@
+// Styling for custom page templates
+
+// General for pages with no grid
+.main-container.no-grid {
+  margin-top: 1rem;
+}
+
+
+// -- page-get-wod-scores-now
+.webhook {
+  max-width: 700px;
+  border-radius: 10px;
+  padding: 1rem;
+  background: $black;
+  color: $white;
+  margin: auto;
+
+  &.webhook--response {
+    border: 2px solid $tcf-web-blue;
+  }
+
+  &.webhook--notloggedin {
+    border: 2px solid red;
+  }
+}
