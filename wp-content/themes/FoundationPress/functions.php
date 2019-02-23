@@ -71,7 +71,6 @@ if ( function_exists('register_sidebar') )
 // Helper function to pull data from stored JSON object
 // JSON object was created with functions in legacy-functions.php
 function get_current_local_leaderboard() {
-
   // Refer to webroot/site-assets/json for data structure
   $path = ABSPATH . 'site-assets/json/2018athletes.json';
   $leaderboard = json_decode( file_get_contents( $path ) );
@@ -85,6 +84,13 @@ function write_to_local_leaderboard( $leaderboard_variable ) {
   // Get the path for where to store the object, and write it!
   $local_path = ABSPATH . 'site-assets/json/2018athletes.json';
   file_put_contents($local_path, $jsonObject);
+}
+
+function get_current_team_scores() {
+  // Refer to webroot/site-assets/json for data structure
+  $path = ABSPATH . 'site-assets/json/2018teams.json';
+  $scores = json_decode( file_get_contents( $path ) );
+  return $scores;
 }
 
 function write_local_team_scores( $team_scores_variable ) {
@@ -292,12 +298,52 @@ function score_teams() {
     $team_scores->green->wods->{$i} = score_team_one_wod( $green_team, $i );
   }
 
+  // Add team color within object. For use when creating team-based leaderboard
+  // in display_team_leaderboard
+  $team_scores->red->color = 'red';
+  $team_scores->blue->color = 'blue';
+  $team_scores->green->color = 'green';
+
   // Write scores to local team scores JSON object. This object is just written
   // over every time we run the score-teams-now webhook
   write_local_team_scores( $team_scores );
 
   // Return for confirmation on webhook page
   return 'Red team: ' . $team_scores->red->overall . '-- Blue team: ' . $team_scores->blue->overall . '-- Green team: ' . $team_scores->green->overall;
+}
+
+// Functions to get info to display leaderboards!
+function display_team_leaderboard() {
+  // Get local versions of team scores and leaderboard
+  $team_scores = get_current_team_scores();
+  $leaderboard = get_current_local_leaderboard();
+
+  // Create an object that has athletes sorted into teams
+  $team_leaderboard = new stdClass();
+
+  // Add team scores
+  foreach ($team_scores as $team_score) {
+    $team_leaderboard->{$team_score->color} = $team_score;
+  }
+
+  // Add individuals to their teams
+  foreach ($leaderboard as $athlete) {
+    switch ( $athlete->entrant->team ) {
+      case 'red':
+        $team = 'red';
+        break;
+      case 'blue':
+        $team = 'blue';
+        break;
+      case 'green':
+        $team = 'green';
+        break;
+    }
+    $team_leaderboard->{$team}->athletes->{$athlete->entrant->competitorId} = $athlete;
+  }
+
+  // We're sending this to the front end, so make it JSON!
+  return json_encode($team_leaderboard);
 }
 
 // Register athlete info retrieval with REST API!
@@ -339,5 +385,13 @@ add_action( 'rest_api_init', function () {
   register_rest_route( 'tcf-athletes/v1', '/score-teams-now', array(
     'methods' => 'GET',
     'callback' => 'score_teams',
+  ) );
+} );
+
+// Route to send team leaderboard JSON object to the front end
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'tcf-athletes/v1', '/get-team-leaderboard', array(
+    'methods' => 'GET',
+    'callback' => 'display_team_leaderboard',
   ) );
 } );
