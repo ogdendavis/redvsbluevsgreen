@@ -73,7 +73,7 @@ if ( function_exists('register_sidebar') )
 function get_current_local_leaderboard() {
 
   // Refer to webroot/site-assets/json for data structure
-  $path = ABSPATH . 'site-assets/json/rvbvg2018.json';
+  $path = ABSPATH . 'site-assets/json/2018athletes.json';
   $leaderboard = json_decode( file_get_contents( $path ) );
   return $leaderboard;
 }
@@ -83,7 +83,14 @@ function get_current_local_leaderboard() {
 function write_to_local_leaderboard( $leaderboard_variable ) {
   $jsonObject = json_encode($leaderboard_variable);
   // Get the path for where to store the object, and write it!
-  $local_path = ABSPATH . 'site-assets/json/rvbvg2018.json';
+  $local_path = ABSPATH . 'site-assets/json/2018athletes.json';
+  file_put_contents($local_path, $jsonObject);
+}
+
+function write_local_team_scores( $team_scores_variable ) {
+  $jsonObject = json_encode($team_scores_variable);
+  // Get the path for where to store the object, and write it!
+  $local_path = ABSPATH . 'site-assets/json/2018teams.json';
   file_put_contents($local_path, $jsonObject);
 }
 
@@ -190,12 +197,12 @@ function score_local_leaderboard() {
 
 // Function to sort athletes and return only the requested ones (by team or gender)
 // Takes a string, and returns a subset of the leaderboard that fits the parameter
-function sort_athletes( $request ) {
+function sort_athletes( $parameter ) {
   // Get athletes!
   $athletes = get_current_local_leaderboard();
 
   // Figure out how we'll sort them
-  switch ($request['sort']) {
+  switch ( $parameter ) {
     case 'red':
       $filter_field = 'team';
       $filter_value = 'red';
@@ -221,10 +228,21 @@ function sort_athletes( $request ) {
       return $athletes;
   }
 
+  // array_filter doesn't really work on objects! DUH!
   // Filter for the group of athletes requested
-  $result = array_filter($athletes, function($athlete) use ($filter_field, $filter_value) {
-    return ($athlete->entrant->{$filter_field} === $filter_value);
-  });
+  // $result = array_filter($athletes, function($athlete) use ($filter_field, $filter_value) {
+  //   return ($athlete->entrant->{$filter_field} == $filter_value ? true : false);
+  // });
+
+  // Create a new object to hold the return
+  $result = new stdClass();
+
+  // Filter all athletes to populate the result object
+  foreach ( $athletes as $athlete ) {
+    if ( $athlete->entrant->{$filter_field} === $filter_value ) {
+      $result->{$athlete->entrant->competitorId} = $athlete;
+    }
+  }
 
   // And return!
   return $result;
@@ -232,16 +250,11 @@ function sort_athletes( $request ) {
 
 // Function to calculate total team score
 function score_teams() {
-  // Helper function to get all athltes in a team, scored
-  function get_team( $team_color ) {
-    $request = new WP_REST_Request( 'GET', '/tcf-athletes/v1/sort/' . $team_color );
-    return rest_do_request($request);
-  }
-
-  // Get the teams, scored
-  $red_team = get_team('red')->data;
-  $blue_team = get_team('blue')->data;
-  $green_team = get_team('green')->data;
+  // Get the teams. These will have scores for any WODs already pulled in with
+  // a call to the score-athletes-now webhook
+  $red_team = sort_athletes( 'red' );
+  $blue_team = sort_athletes( 'blue' );
+  $green_team = sort_athletes( 'green' );
 
   // Helper function to generate an overall team score
   function score_team_overall( $team ) {
@@ -252,7 +265,7 @@ function score_teams() {
     return $score;
   }
 
-  // WRITE IT! Helper function to generate team score by week
+  // Helper function to generate team score by week
   function score_team_one_wod ( $team, $wod ) {
     $team_score = 0;
     foreach ($team as $athlete) {
@@ -270,14 +283,19 @@ function score_teams() {
   $team_scores->green->overall = score_team_overall( $green_team );
 
   // Add weekly scores
-  $wods = count(reset($red_team)->scores);
+  $wods = count(reset($red_team)->scores) - 1;
   for ($i = 0; $i < $wods; $i++) {
     $team_scores->red->wods->{$i} = score_team_one_wod( $red_team, $i );
     $team_scores->blue->wods->{$i} = score_team_one_wod( $blue_team, $i );
     $team_scores->green->wods->{$i} = score_team_one_wod( $green_team, $i );
   }
 
-  return $team_scores;
+  // Write scores to local team scores JSON object. This object is just written
+  // over every time we run the score-teams-now webhook
+  write_local_team_scores( $team_scores );
+
+  // Return for confirmation on webhook page
+  return 'Red team: ' . $team_scores->red->overall . '-- Blue team: ' . $team_scores->blue->overall . '-- Green team: ' . $team_scores->green->overall;
 }
 
 // Register athlete info retrieval with REST API!
@@ -311,5 +329,13 @@ add_action( 'rest_api_init', function () {
   register_rest_route( 'tcf-athletes/v1', '/score-athletes-now', array(
     'methods' => 'GET',
     'callback' => 'score_local_leaderboard',
+  ) );
+} );
+
+// Route to score teams in local leaderboard
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'tcf-athletes/v1', '/score-teams-now', array(
+    'methods' => 'GET',
+    'callback' => 'score_teams',
   ) );
 } );
