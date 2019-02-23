@@ -24,8 +24,8 @@ get_header(); ?>
 
 			<div class="webhook webhook--response">
 				Sent request to score athletes by in-house ranking.<br>
-				Response:<br>
 				<br>
+				Response:<br>
 				<?php var_dump($response); ?>
 			</div>
 

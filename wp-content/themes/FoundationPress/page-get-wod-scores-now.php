@@ -22,8 +22,8 @@ get_header(); ?>
 
 			<div class="webhook webhook--response">
 				Sent request to update local leaderboard with info from games.crossfit.com.<br>
-				Response:<br>
 				<br>
+				Response:<br>
 				<?php var_dump($response); ?>
 			</div>
 
