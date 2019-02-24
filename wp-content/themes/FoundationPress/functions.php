@@ -189,10 +189,7 @@ function score_athletes( &$athletes ) {
     }
   }
 
-  // Sort athletes by overall score and return
-  usort($athletes, function($a,$b) {
-    return $a->tcfPointTotal > $b->tcfPointTotal ? 1 : -1;
-  });
+  // Return athletes
   return $athletes;
 }
 
