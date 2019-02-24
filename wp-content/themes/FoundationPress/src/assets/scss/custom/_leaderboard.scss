@@ -5,8 +5,20 @@
   padding: 0;
 }
 
+// Using the #teamAccordion ID here to override default FoundationPress styles
+#teamAccordion a {
+  color: $black;
+}
 
-// Team leaderboard -- teams
+.teamLeaderboard__container {
+  box-shadow: $box-shadow;
+  transition: box-shadow $transition;
+
+  &:hover {
+    box-shadow: $box-shadow-hover;
+  }
+}
+
 .teamLeaderboard__title {
   display: flex;
   flex-flow: row nowrap;
@@ -34,4 +46,8 @@
   font-size: 1rem;
 }
 
-// Team leaderboard -- individuals
+.teamLeaderboard__footer {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 1rem;
+}

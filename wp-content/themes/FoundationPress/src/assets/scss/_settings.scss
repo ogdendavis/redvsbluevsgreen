@@ -60,6 +60,7 @@
 //  54. Tooltip
 //  55. Top Bar
 //  56. Xy Grid
+//  57. Custom additions
 
 @import 'util/util';
 @import 'global/colors';
@@ -100,11 +101,6 @@ $global-prototype-breakpoints: false;
 $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
-
-// Custom
-$transition: 1s ease-in-out;
-$box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-$box-shadow-hover: 0 10px 15px rgba(0,0,0,0.55);
 
 @include add-foundation-colors;
 
@@ -873,3 +869,11 @@ $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
+
+
+// 57. Custom additions by LOD
+// --------------
+
+$transition: 1s ease-in-out;
+$box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+$box-shadow-hover: 0 10px 15px rgba(0,0,0,0.55);
