@@ -290,6 +290,20 @@ function score_teams() {
   $team_scores->blue->overall = score_team_overall( $blue_team );
   $team_scores->green->overall = score_team_overall( $green_team );
 
+  // Add overall ranks
+  foreach ($team_scores as $one_team) {
+    $one_score = $one_team->overall;
+    if ($one_score >= $team_scores->red->overall && $one_score >= $team_scores->blue->overall && $one_score >= $team_scores->green->overall) {
+      $one_team->rank = 1;
+    }
+    elseif ($one_score <= $team_scores->red->overall && $one_score <= $team_scores->blue->overall && $one_score <= $team_scores->green->overall) {
+      $one_team->rank = 3;
+    }
+    else {
+      $one_team->rank = 2;
+    }
+  }
+
   // Add weekly scores
   $wods = count(reset($red_team)->scores) - 1;
   for ($i = 0; $i < $wods; $i++) {
