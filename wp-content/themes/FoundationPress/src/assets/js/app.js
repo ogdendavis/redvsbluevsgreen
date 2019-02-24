@@ -1,7 +1,13 @@
 import $ from 'jquery';
 import whatInput from 'what-input';
+import leaderboard from './custom/leaderboard';
 
 window.$ = $;
+
+$(document).ready(() => {
+  console.log('ready!')
+  leaderboard.init();
+});
 
 import Foundation from 'foundation-sites';
 // If you want to pick and choose which modules to include, comment out the above and uncomment

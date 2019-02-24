@@ -15,6 +15,10 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="https://fonts.googleapis.com/css?family=Arimo:400,700|Roboto:400,700" rel="stylesheet">
+		<?php // Get site_url from php and show it to front-end JavaScript ?>
+		<script type="text/javascript">
+			var wpHome = '<?php echo 'http:' . site_url('/'); ?>';
+		</script>
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>

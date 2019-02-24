@@ -1,0 +1,37 @@
+// Styles for leaderboard!
+
+// Remove default padding
+.tabs-panel, .accordion-content {
+  padding: 0;
+}
+
+
+// Team leaderboard -- teams
+.teamLeaderboard__title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.teamLeaderboard__teamPlace {
+  font-size: 1rem;
+}
+
+.teamLeaderboard__icon {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 10px;
+  width: 100px;
+}
+
+.teamLeaderboard__teamName {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.teamLeaderboard__teamScore {
+  font-size: 1rem;
+}
+
+// Team leaderboard -- individuals

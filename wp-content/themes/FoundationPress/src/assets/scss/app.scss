@@ -83,9 +83,14 @@
 @import "templates/kitchen-sink";
 
 // Custom CSS for TCF site!
+// Partial templates
 @import "custom/header";
 @import "custom/footer";
 @import "custom/sidebar";
+// Template parts
+@import "custom/content";
+// Components drawn with JavaScript
+@import "custom/leaderboard";
+// Full page templates
 @import "custom/front-page";
 @import "custom/pages";
-@import "custom/content";

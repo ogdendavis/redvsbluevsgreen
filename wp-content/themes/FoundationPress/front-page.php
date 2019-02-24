@@ -41,9 +41,38 @@
         <?php // Tab content, including sub-tabs ?>
         <div class="tabs-content" data-tabs-content="leaderboard-tabs">
 
-          <div class="tabs-panel is-active" id="teamScores">
+          <div class="tabs-panel is-active" id="teamLeaderboard">
+            <?php // Get the team leaderboard, then display it as an accordion! ?>
+            <?php
+              $request = new WP_REST_Request( 'GET', '/tcf-athletes/v1/get-team-leaderboard' );
+      			  $response = rest_do_request($request);
+              // Pass the response to the browser, so I can play with it in JavaScript!
+              echo '<script>';
+              echo 'var teamLeaderboardData = ' . $response->data . ';';
+              echo '</script>';
+            ?>
 
-            <p>This is where the team leaderboard will go!</p>
+            <ul class="accordion" data-accordion data-allow-all-closed="true" id="teamAccordion">
+              <!-- leaderboard.js will populate each item here  -->
+              <li class="accordion-item" id="teamAccordionFirst" data-accordion-item>
+                <a href="#" class="accordion-title teamLeaderboard__title">
+                </a>
+                <div class="accordion-content" data-tab-content>
+                </div>
+              </li>
+              <li class="accordion-item" id="teamAccordionSecond" data-accordion-item>
+                <a href="#" class="accordion-title teamLeaderboard__title">
+                </a>
+                <div class="accordion-content" data-tab-content>
+                </div>
+              </li>
+              <li class="accordion-item" id="teamAccordionThird" data-accordion-item>
+                <a href="#" class="accordion-title teamLeaderboard__title">
+                </a>
+                <div class="accordion-content" data-tab-content>
+                </div>
+              </li>
+            </ul>
 
           </div>
 
