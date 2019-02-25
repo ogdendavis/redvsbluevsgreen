@@ -9,8 +9,8 @@ function drawTeamLeaderboard() {
                      teamLeaderboardData.blue.rank === 1 ? teamLeaderboardData.blue : teamLeaderboardData.green;
 
   const secondPlace = teamLeaderboardData.red.rank === 2 ? teamLeaderboardData.red :
-                      teamLeaderboardData.blue.rank === 2 ? teamLeaderboardData.blue :
-                      teamLeaderboardData.green;
+                      teamLeaderboardData.green.rank === 2 ? teamLeaderboardData.green :
+                      teamLeaderboardData.blue;
 
   const thirdPlace = teamLeaderboardData.red.rank === 3 ? teamLeaderboardData.red :
                      teamLeaderboardData.blue.rank === 3 ? teamLeaderboardData.blue :
