@@ -37,10 +37,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
 
   .team-icon {
     height: 48px;
+    margin: 0 1rem;
   }
 }
 
@@ -50,8 +51,7 @@
     height: auto;
   }
 
-  .header-team-icons .team-icon {
-    height: 32px;
+  .header-team-icons {
+    justify-content: center;
   }
-
 }
