@@ -107,8 +107,12 @@ function get_current_games_leaderboard() {
   $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
   $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
 
+  // Add teens! Just 14-15 range, since we don't have any 16-17, this year
+  $teen_boys = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=14&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+  $teen_girls = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=15&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+
   // Put all athletes into one big array, and return it
-  $all_athletes = array_merge($all_men, $all_women);
+  $all_athletes = array_merge($all_men, $all_women, $teen_boys, $teen_girls);
   return $all_athletes;
 }
 
@@ -406,4 +410,3 @@ add_action( 'rest_api_init', function () {
     'callback' => 'display_team_leaderboard',
   ) );
 } );
-x
