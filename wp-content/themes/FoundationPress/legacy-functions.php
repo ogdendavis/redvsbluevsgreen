@@ -3,22 +3,25 @@
  * longer needed. Kept here for reference, or to bust 'em out next year
  */
 
- // LEGACY - the function used to initially create the locally-hosted JSON
- // object with the 2018 leaderboard, for testing
- function instantiate_leaderboard_2018() {
-   $leaderboard_path_2018 = ABSPATH . '/assets/json/rvbvg2018.json';
+
+
+ /* ONE-TIME-USE: Setup 2019 leaderboard */
+
+ function instantiate_leaderboard_2019() {
+   $leaderboard_path_2019 = ABSPATH . '/site-assets/json/2019athletes.json';
+
    // $rvbvg = json_decode(file_get_contents($leaderboard_path));
    // $rvbvg->test2 = "This is a writing test";
    // $returnJSON = json_encode($rvbvg);
    // file_put_contents($leaderboard_path, $returnJSON);
    // return $rvbvg;
-   $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
-   $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+   $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+   $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
    $all_athletes = array_merge($all_men, $all_women);
 
    // Easier than unsetting all the variables we don't want -- create a new
    // object to hold the variables we do want!
-   $rvbvg2018 = new stdClass();
+   $rvbvg2019 = new stdClass();
 
    foreach ($all_athletes as $athlete) {
      // Making the key for the athlete object in our local version the same as
@@ -28,15 +31,17 @@
      $i = $athlete->entrant->competitorId;
 
      // entrant -- we want to keep competitorId, competitorName, gender, profilePicS3key
-     $rvbvg2018->{$i}->entrant->competitorId = $athlete->entrant->competitorId;
-     $rvbvg2018->{$i}->entrant->competitorName = $athlete->entrant->competitorName;
-     $rvbvg2018->{$i}->entrant->gender = $athlete->entrant->gender;
-     $rvbvg2018->{$i}->entrant->profilePicS3key = $athlete->entrant->profilePicS3key;
+     $rvbvg2019->{$i}->entrant->competitorId = $athlete->entrant->competitorId;
+     $rvbvg2019->{$i}->entrant->competitorName = $athlete->entrant->competitorName;
+     $rvbvg2019->{$i}->entrant->gender = $athlete->entrant->gender;
+     $rvbvg2019->{$i}->entrant->profilePicS3key = $athlete->entrant->profilePicS3key;
      // entrant -- we want to add team (empty, for now)
-     $rvbvg2018->{$i}->entrant->team = '';
+     $rvbvg2019->{$i}->entrant->team = '';
 
      //ui -- we don't want anything from there!
 
+     $rvbvg2019->{$i}->scores = [];
+     /* Not adding any scores!
      //scores -- we want to keep the score from some WODs for now, so we can test adding scores, later
      $rvbvg2018->{$i}->scores[0]->score = $athlete->scores[0]->score;
      $rvbvg2018->{$i}->scores[0]->scaled = $athlete->scores[0]->scaled;
@@ -48,27 +53,29 @@
      $rvbvg2018->{$i}->scores[0]->tcfPoints = 0;
      $rvbvg2018->{$i}->scores[1]->tcfPoints = 0;
      $rvbvg2018->{$i}->scores[2]->tcfPoints = 0;
+     */
 
      //We don't care about overallRank, because we'll calculate that differently
      // But we do want tcfPointTotal!
-     $rvbvg2018->{$i}->tcfPointTotal = 0;
+     $rvbvg2019->{$i}->tcfPointTotal = 0;
    } // end foreach athlete
 
    // Encode the object as JSON, and write it to the local path
-   $json2018 = json_encode($rvbvg2018);
-   file_put_contents($leaderboard_path_2018, $json2018);
+   $json2019 = json_encode($rvbvg2019);
+   file_put_contents($leaderboard_path_2019, $json2019);
 
    // We did it!
-   return 'Success: New local 2018 leaderboard created!';
+   return 'Success: New local 2019 leaderboard created!';
  }
 
- // LEGACY - route used to create 2018 leaderboard
+ // LEGACY - route used to create 2019 leaderboard
  add_action( 'rest_api_init', function () {
-   register_rest_route( 'tcf-athletes/v1', '/new-leaderboard-2018', array(
+   register_rest_route( 'tcf-athletes/v1', '/new-leaderboard-2019', array(
      'methods' => 'GET',
-     'callback' => 'instantiate_leaderboard_2018',
+     'callback' => 'instantiate_leaderboard_2019',
    ) );
  } );
+
 
  // LEGACY - Function to get leaderboard data from games site and append team info
  function get_athletes() {

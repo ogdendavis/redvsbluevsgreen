@@ -72,7 +72,7 @@ if ( function_exists('register_sidebar') )
 // JSON object was created with functions in legacy-functions.php
 function get_current_local_leaderboard() {
   // Refer to webroot/site-assets/json for data structure
-  $path = ABSPATH . 'site-assets/json/2018athletes.json';
+  $path = ABSPATH . 'site-assets/json/2019athletes.json';
   $leaderboard = json_decode( file_get_contents( $path ) );
   return $leaderboard;
 }
@@ -82,13 +82,13 @@ function get_current_local_leaderboard() {
 function write_to_local_leaderboard( $leaderboard_variable ) {
   $jsonObject = json_encode($leaderboard_variable);
   // Get the path for where to store the object, and write it!
-  $local_path = ABSPATH . 'site-assets/json/2018athletes.json';
+  $local_path = ABSPATH . 'site-assets/json/2019athletes.json';
   file_put_contents($local_path, $jsonObject);
 }
 
 function get_current_team_scores() {
   // Refer to webroot/site-assets/json for data structure
-  $path = ABSPATH . 'site-assets/json/2018teams.json';
+  $path = ABSPATH . 'site-assets/json/2019teams.json';
   $scores = json_decode( file_get_contents( $path ) );
   return $scores;
 }
@@ -96,7 +96,7 @@ function get_current_team_scores() {
 function write_local_team_scores( $team_scores_variable ) {
   $jsonObject = json_encode($team_scores_variable);
   // Get the path for where to store the object, and write it!
-  $local_path = ABSPATH . 'site-assets/json/2018teams.json';
+  $local_path = ABSPATH . 'site-assets/json/2019teams.json';
   file_put_contents($local_path, $jsonObject);
 }
 
@@ -104,8 +104,8 @@ function write_local_team_scores( $team_scores_variable ) {
 function get_current_games_leaderboard() {
 
   // Have to pull by gender, because that's how the games site does it
-  $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
-  $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2018/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+  $all_men = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=1&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
+  $all_women = json_decode(file_get_contents('https://games.crossfit.com/competitions/api/v1/competitions/open/2019/leaderboards?division=2&region=0&scaled=0&sort=0&occupation=0&page=1&affiliate=4259'))->leaderboardRows;
 
   // Put all athletes into one big array, and return it
   $all_athletes = array_merge($all_men, $all_women);
@@ -406,3 +406,4 @@ add_action( 'rest_api_init', function () {
     'callback' => 'display_team_leaderboard',
   ) );
 } );
+x
