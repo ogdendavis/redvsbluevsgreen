@@ -55,11 +55,13 @@ function drawTeam(team, place) {
   // This will be used to populate the team info tab!
   const athletes = Object.keys(team.athletes).map(function(i) {
     return team.athletes[i];
-  }).sort(function(a,b) {
+  })
+
+  athletes.sort(function(a,b) {
     // Remember, lower points is better!
     return a.tcfPointTotal > b.tcfPointTotal;
   });
-  console.log(athletes);
+
   // Populate the team info (empty in front-page.php)
   const tabContentSelector = containerId + ' div.accordion-content';
   const tabContent = document.querySelector(tabContentSelector);

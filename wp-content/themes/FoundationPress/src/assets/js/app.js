@@ -5,7 +5,6 @@ import leaderboard from './custom/leaderboard';
 window.$ = $;
 
 $(document).ready(() => {
-  console.log('ready!')
   leaderboard.init();
 });
 
