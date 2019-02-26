@@ -140,7 +140,7 @@ function get_wod_scores_from_games_site() {
       // Go through the score object for each WOD for this athlete
       foreach ($scores as $athlete_record) {
         // Get the ordinal from the score
-        $wod = $athlete_record->ordinal;
+        $wod = $athlete_record->ordinal - 1;
 
         // Check that the that athlete doesn't already have a score for that WOD, and that there is a score in the games leaderboard
         if ( !isset( $local_leaderboard->{$id}->scores[$wod]->score ) && isset( $scores[$wod]->score ) ) {
@@ -294,10 +294,10 @@ function score_teams() {
   // Add overall ranks
   foreach ($team_scores as $one_team) {
     $one_score = $one_team->overall;
-    if ($one_score >= $team_scores->red->overall && $one_score >= $team_scores->blue->overall && $one_score >= $team_scores->green->overall) {
+    if ($one_score <= $team_scores->red->overall && $one_score <= $team_scores->blue->overall && $one_score <= $team_scores->green->overall) {
       $one_team->rank = 1;
     }
-    elseif ($one_score <= $team_scores->red->overall && $one_score <= $team_scores->blue->overall && $one_score <= $team_scores->green->overall) {
+    elseif ($one_score >= $team_scores->red->overall && $one_score >= $team_scores->blue->overall && $one_score >= $team_scores->green->overall) {
       $one_team->rank = 3;
     }
     else {
