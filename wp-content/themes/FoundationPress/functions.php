@@ -177,9 +177,9 @@ function score_athletes( &$athletes ) {
     rsort($wod_scores);
 
     // Assign each athlete a point total based on how well he/she scored overall
-    // Tied scores will share the highest (worst) points available for the score
+    // Tied scores will share the lowest (best) points available for the score
     foreach($athletes as $athlete) {
-      $athlete->scores[$i]->tcfPoints = max(array_keys($wod_scores, $athlete->scores[$i]->score)) + 1;
+      $athlete->scores[$i]->tcfPoints = min(array_keys($wod_scores, $athlete->scores[$i]->score)) + 1;
     }
   }
 
