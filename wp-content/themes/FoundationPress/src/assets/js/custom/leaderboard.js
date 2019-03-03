@@ -59,7 +59,7 @@ function drawTeam(team, place) {
 
   athletes.sort(function(a,b) {
     // Remember, lower points is better!
-    return a.tcfPointTotal > b.tcfPointTotal;
+    return a.tcfPointTotal - b.tcfPointTotal;
   });
 
   // Populate the team info (empty in front-page.php)
