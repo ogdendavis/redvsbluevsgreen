@@ -46,6 +46,11 @@
   font-size: 1rem;
 }
 
+.teamLeaderboard__athleteTable th:hover {
+  cursor: pointer;
+  color: blue;
+}
+
 .teamLeaderboard__footer {
   font-size: 0.8rem;
   font-style: italic;

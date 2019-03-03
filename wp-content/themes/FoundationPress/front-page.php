@@ -44,19 +44,19 @@
           <li class="accordion-item" id="teamAccordionFirst" data-accordion-item>
             <a href="#" class="accordion-title teamLeaderboard__title">
             </a>
-            <div class="accordion-content" data-tab-content>
+            <div class="accordion-content teamLeaderboard__content" data-tab-content>
             </div>
           </li>
           <li class="accordion-item" id="teamAccordionSecond" data-accordion-item>
             <a href="#" class="accordion-title teamLeaderboard__title">
             </a>
-            <div class="accordion-content" data-tab-content>
+            <div class="accordion-content teamLeaderboard__content" data-tab-content>
             </div>
           </li>
           <li class="accordion-item" id="teamAccordionThird" data-accordion-item>
             <a href="#" class="accordion-title teamLeaderboard__title">
             </a>
-            <div class="accordion-content" data-tab-content>
+            <div class="accordion-content teamLeaderboard__content" data-tab-content>
             </div>
           </li>
         </ul>
