@@ -265,16 +265,7 @@ function score_teams() {
   $blue_team = sort_athletes( 'blue' );
   $green_team = sort_athletes( 'green' );
 
-  // Helper function to generate an overall team score
-  function score_team_overall( $team ) {
-    $score = 0;
-    foreach ( $team as $athlete ) {
-      $score += $athlete->tcfPointTotal;
-    }
-    return $score;
-  }
-
-  // Helper function to generate team score by week
+  // Helper function to generate team points by week
   function score_team_one_wod ( $team, $wod ) {
     $team_score = 0;
     foreach ($team as $athlete) {
@@ -283,27 +274,147 @@ function score_teams() {
     return $team_score;
   }
 
+  // Helper function to generate team total points
+  // This will be used as a tiebreaker!
+  function score_team_total_points( $team ) {
+    $score = 0;
+    foreach ( $team as $athlete ) {
+      $score += $athlete->tcfPointTotal;
+    }
+    return $score;
+  }
+
+  // Helper function to generate team overall ranking points
+  // Teams are scored as if they were athletes -- 1st place in a week gets 1
+  // point, 2nd place gets 2, and 3rd gets 3. Leader is the team with the fewest
+  // points so far in competition, etc.
+  function score_teams_overall( $all_scores_object ) {
+    // Create object to hold weekly scores (ranks)
+    $overall_scores = new stdClass();
+    $overall_scores->red = 0;
+    $overall_scores->blue = 0;
+    $overall_scores->green = 0;
+
+    // Go through each WOD, and calculate scores to add to object
+    $number_wods = count((array)$all_scores_object->red->wods);
+    for ($i = 0; $i < $number_wods; $i++) {
+      // Get team scores for that WOD
+      $red = $all_scores_object->red->wods->{$i};
+      $blue = $all_scores_object->blue->wods->{$i};
+      $green = $all_scores_object->green->wods->{$i};
+
+      $best_score = min($red, $blue, $green);
+      if ($best_score === $red) {
+        $best_team = 'red';
+      }
+      else if ($best_score === $blue) {
+        $best_team = 'blue';
+      }
+      else {
+        $best_team = 'green';
+      }
+
+      $worst_score = max($red, $blue, $green);
+      if ($worst_score === $red) {
+        $worst_team = 'red';
+      }
+      else if ($worst_score === $blue) {
+        $worst_team = 'blue';
+      }
+      else {
+        $worst_team = 'green';
+      }
+
+      $used = array($best_team, $worst_team);
+      if (!in_array('red', $used)) {
+        $mid_team = 'red';
+      }
+      else if (!in_array('blue', $used)) {
+        $mid_team = 'blue';
+      }
+      else {
+        $mid_team = 'green';
+      }
+
+      $overall_scores->{$best_team} += 1;
+      $overall_scores->{$mid_team} += 2;
+      $overall_scores->{$worst_team} += 3;
+    }
+
+    return $overall_scores;
+  }
+
+  // Helper function to rank teams. Last thing done, assumes object has weekly
+  // scores (wods array), total score (overall), and overall points
+  // Returns object with team ranks!
+  function rank_teams( $teams ) {
+    // First: overall_points
+    // Tiebreak: total score (overall)
+
+    // Create result object
+    $ranks = new stdClass();
+    $ranks->red = 0;
+    $ranks->blue = 0;
+    $ranks->green = 0;
+
+    // Sort by overall_points (main ranking criterion) first
+    foreach ($teams as $one_team) {
+      $team_points = $one_team->overall_points;
+      if ($team_points <= $teams->red->overall_points && $team_points <= $teams->blue->overall_points && $team_points <= $teams->green->overall_points) {
+        $ranks->{$one_team->color} = 1;
+      }
+      elseif ($team_points >= $teams->red->overall_points && $team_points >= $teams->blue->overall_points && $team_points >= $teams->green->overall_points) {
+        $ranks->{$one_team->color} = 3;
+      }
+      else {
+        $ranks->{$one_team->color} = 2;
+      }
+    }
+
+    // Helper function to break ties. Modifies $ranks
+    function break_ties($team1, $team2, $place, &$ranks) {
+      if ($place === 3) {
+        // If teams are tied at spots 2 & 3, they'll both end up with a rank of 3
+        $better = 2;
+        $worse = 3;
+      }
+      else if ($place === 1) {
+        // If teams are tied at spots 1 & 2, they'll both end up with a rank of 1
+        $better = 1;
+        $worse = 2;
+      }
+      if ($teams->{$team1}->overall < $teams->{$team2}->overall) {
+        $ranks->{$team1} = $better;
+        $ranks->{$team2} = $worse;
+      }
+      else {
+        $ranks->{$team2} = $better;
+        $ranks->{$team1} = $worse;
+      }
+    }
+
+    // Check for a tied rank. If it exists, fix it with total score (overall)
+    if ($ranks->red === $ranks->blue) {
+      break_ties('red', 'blue', $ranks->red, $ranks);
+    }
+    else if ($ranks->red === $ranks->green) {
+      break_ties('red', 'green', $ranks->red, $ranks);
+    }
+    else if ($ranks->blue === $ranks->green) {
+      break_ties('blue', 'green', $ranks->blue, $ranks);
+    }
+
+    return $ranks;
+  }
+
   // Create a return object
   $team_scores = new stdClass();
 
-  // Add overall scores
-  $team_scores->red->overall = score_team_overall( $red_team );
-  $team_scores->blue->overall = score_team_overall( $blue_team );
-  $team_scores->green->overall = score_team_overall( $green_team );
-
-  // Add overall ranks
-  foreach ($team_scores as $one_team) {
-    $one_score = $one_team->overall;
-    if ($one_score <= $team_scores->red->overall && $one_score <= $team_scores->blue->overall && $one_score <= $team_scores->green->overall) {
-      $one_team->rank = 1;
-    }
-    elseif ($one_score >= $team_scores->red->overall && $one_score >= $team_scores->blue->overall && $one_score >= $team_scores->green->overall) {
-      $one_team->rank = 3;
-    }
-    else {
-      $one_team->rank = 2;
-    }
-  }
+  // Add team color within object. For use when creating team-based leaderboard
+  // in display_team_leaderboard
+  $team_scores->red->color = 'red';
+  $team_scores->blue->color = 'blue';
+  $team_scores->green->color = 'green';
 
   // Add weekly scores
   $wods = count(reset($red_team)->scores);
@@ -313,12 +424,27 @@ function score_teams() {
     $team_scores->green->wods->{$i} = score_team_one_wod( $green_team, $i );
   }
 
-  // Add team color within object. For use when creating team-based leaderboard
-  // in display_team_leaderboard
-  $team_scores->red->color = 'red';
-  $team_scores->blue->color = 'blue';
-  $team_scores->green->color = 'green';
+  // Add overall scores
+  $team_scores->red->overall = score_team_total_points( $red_team );
+  $team_scores->blue->overall = score_team_total_points( $blue_team );
+  $team_scores->green->overall = score_team_total_points( $green_team );
 
+  $overall_points = score_teams_overall( $team_scores );
+
+  // Add overall points to team objects
+  foreach ($overall_points as $team => $team_points) {
+    $team_scores->{$team}->overall_points = $team_points;
+  }
+
+  // Rank teams using overall_points first, and then overall (total team score)
+  // as tiebreaker
+
+  $overall_ranks = rank_teams($team_scores);
+
+  foreach ($overall_ranks as $team_color => $team_rank) {
+    $team_scores->{$team_color}->rank = $team_rank;
+  }
+  
   // Write scores to local team scores JSON object. This object is just written
   // over every time we run the score-teams-now webhook
   write_local_team_scores( $team_scores );
