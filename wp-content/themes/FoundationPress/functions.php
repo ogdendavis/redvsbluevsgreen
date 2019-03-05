@@ -372,7 +372,7 @@ function score_teams() {
     }
 
     // Helper function to break ties. Modifies $ranks
-    function break_ties($team1, $team2, $place, &$ranks) {
+    function break_ties($teams, $team1, $team2, $place, &$ranks) {
       if ($place === 3) {
         // If teams are tied at spots 2 & 3, they'll both end up with a rank of 3
         $better = 2;
@@ -383,6 +383,7 @@ function score_teams() {
         $better = 1;
         $worse = 2;
       }
+
       if ($teams->{$team1}->overall < $teams->{$team2}->overall) {
         $ranks->{$team1} = $better;
         $ranks->{$team2} = $worse;
@@ -395,13 +396,13 @@ function score_teams() {
 
     // Check for a tied rank. If it exists, fix it with total score (overall)
     if ($ranks->red === $ranks->blue) {
-      break_ties('red', 'blue', $ranks->red, $ranks);
+      break_ties($teams, 'red', 'blue', $ranks->red, $ranks);
     }
     else if ($ranks->red === $ranks->green) {
-      break_ties('red', 'green', $ranks->red, $ranks);
+      break_ties($teams, 'red', 'green', $ranks->red, $ranks);
     }
     else if ($ranks->blue === $ranks->green) {
-      break_ties('blue', 'green', $ranks->blue, $ranks);
+      break_ties($teams, 'blue', 'green', $ranks->blue, $ranks);
     }
 
     return $ranks;
@@ -444,7 +445,7 @@ function score_teams() {
   foreach ($overall_ranks as $team_color => $team_rank) {
     $team_scores->{$team_color}->rank = $team_rank;
   }
-  
+
   // Write scores to local team scores JSON object. This object is just written
   // over every time we run the score-teams-now webhook
   write_local_team_scores( $team_scores );
