@@ -42,8 +42,13 @@
   margin-bottom: 0;
 }
 
-.teamLeaderboard__teamScore {
-  font-size: 1rem;
+.teamLeaderboard__points {
+  margin-right: 1rem;
+
+  span {
+    display: block;
+    font-size: 0.75rem;
+  }
 }
 
 .teamLeaderboard__athleteTable th:hover {
@@ -55,4 +60,12 @@
   font-size: 0.8rem;
   font-style: italic;
   margin: 1rem;
+}
+
+@media only screen and (max-width: 480px) {
+  // For mobile screens in portrait mode
+  .teamLeaderboard__content {
+    font-size: 0.9rem;
+    overflow-y: scroll;
+  }
 }

@@ -51,7 +51,10 @@ function drawTeam(team, place, sortBy = 'Points') {
   tabTitleContent += '<span class="teamLeaderboard__teamPlace">' + properPlace + '</span>';
   tabTitleContent += '<img src="' + imagePath + '" class="teamLeaderboard__icon">'
   tabTitleContent += '<h2 class="teamLeaderboard__teamName">' + teamName + '</h2>';
-  tabTitleContent += '<span class="teamLeaderboard__teamScore">' + team.overall + ' points</span>';
+  tabTitleContent += '<div class="teamLeaderboard__points">';
+  tabTitleContent += '<span class="teamLeaderboard__points--rank">Rank Points: ' + team.overall_points + '</span>';
+  tabTitleContent += '<span class="teamLeaderboard__points--total">Total Points: ' + team.overall + '</span>';
+  tabTitleContent += '</div>';
   tabTitle.innerHTML = tabTitleContent;
 
   // Create an array containing all athlete objects, sorted by overall points
