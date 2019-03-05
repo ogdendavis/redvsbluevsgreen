@@ -306,7 +306,7 @@ function score_teams() {
   }
 
   // Add weekly scores
-  $wods = count(reset($red_team)->scores) - 1;
+  $wods = count(reset($red_team)->scores);
   for ($i = 0; $i < $wods; $i++) {
     $team_scores->red->wods->{$i} = score_team_one_wod( $red_team, $i );
     $team_scores->blue->wods->{$i} = score_team_one_wod( $blue_team, $i );
