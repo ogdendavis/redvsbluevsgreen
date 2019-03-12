@@ -142,13 +142,11 @@ function get_wod_scores_from_games_site() {
         // Get the ordinal from the score
         $wod = $athlete_record->ordinal - 1;
 
-        // Check that the that athlete doesn't already have a score for that WOD, and that there is a score in the games leaderboard
-        if ( !isset( $local_leaderboard->{$id}->scores[$wod]->score ) && isset( $scores[$wod]->score ) ) {
-          // Add absolute score, and note if it's scaled or not
-          $local_leaderboard->{$id}->scores[$wod]->score = $scores[$wod]->score;
-          $local_leaderboard->{$id}->scores[$wod]->scaled = $scores[$wod]->scaled;
-          $updated_records += 1;
-        }
+        // Set scores without checks -- to make life easier when needing to pull
+        // updates!
+        $local_leaderboard->{$id}->scores[$wod]->score = $scores[$wod]->score;
+        $local_leaderboard->{$id}->scores[$wod]->scaled = $scores[$wod]->scaled;
+        $updated_records += 1;
       }
     }
   }
