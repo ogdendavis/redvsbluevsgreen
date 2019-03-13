@@ -289,9 +289,9 @@ function score_teams() {
   function score_teams_overall( $all_scores_object ) {
     // Create object to hold weekly scores (ranks)
     $overall_scores = new stdClass();
-    $overall_scores->red = 0;
-    $overall_scores->blue = 0;
-    $overall_scores->green = 0;
+    $overall_scores->red->total = 0;
+    $overall_scores->blue->total = 0;
+    $overall_scores->green->total = 0;
 
     // Go through each WOD, and calculate scores to add to object
     $number_wods = count((array)$all_scores_object->red->wods);
@@ -334,9 +334,15 @@ function score_teams() {
         $mid_team = 'green';
       }
 
-      $overall_scores->{$best_team} += 1;
-      $overall_scores->{$mid_team} += 2;
-      $overall_scores->{$worst_team} += 3;
+      // Create weekly scores
+      $overall_scores->{$best_team}->weekly->{$i} = 1;
+      $overall_scores->{$mid_team}->weekly->{$i} = 2;
+      $overall_scores->{$worst_team}->weekly->{$i} = 3;
+
+      // Add to total scores
+      $overall_scores->{$best_team}->total += 1;
+      $overall_scores->{$mid_team}->total += 2;
+      $overall_scores->{$worst_team}->total += 3;
     }
 
     return $overall_scores;
@@ -428,11 +434,15 @@ function score_teams() {
   $team_scores->blue->overall = score_team_total_points( $blue_team );
   $team_scores->green->overall = score_team_total_points( $green_team );
 
+  // Create object with overall team scores, and weekly scores
   $overall_points = score_teams_overall( $team_scores );
 
   // Add overall points to team objects
   foreach ($overall_points as $team => $team_points) {
-    $team_scores->{$team}->overall_points = $team_points;
+    $team_scores->{$team}->overall_points = $team_points->total;
+    foreach ($team_points->weekly as $week => $week_points) {
+      $team_scores->{$team}->weekly_points->{$week} = $week_points;
+    }
   }
 
   // Rank teams using overall_points first, and then overall (total team score)
