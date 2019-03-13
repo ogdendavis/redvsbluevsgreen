@@ -42,6 +42,14 @@
   margin-bottom: 0;
 }
 
+.teamLeaderboard__weekly {
+  margin-right: 1rem;
+
+  span {
+    display: block;
+  }
+}
+
 .teamLeaderboard__points {
   margin-right: 1rem;
 
@@ -67,5 +75,11 @@
   .teamLeaderboard__content {
     font-size: 0.9rem;
     overflow-y: scroll;
+  }
+
+  // Allow leaderboard to go to 2 rows in mobile
+  .teamLeaderboard__title {
+    flex-flow: row wrap;
+    align-content: space-between;
   }
 }

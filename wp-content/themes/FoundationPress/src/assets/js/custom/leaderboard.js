@@ -22,10 +22,16 @@ function drawTeamLeaderboard(sortBy = 'Points') {
   drawTeam(firstPlace, 1, sortBy);
   drawTeam(secondPlace, 2, sortBy);
   drawTeam(thirdPlace, 3, sortBy);
-
 }
 
 function drawTeam(team, place, sortBy = 'Points') {
+  // Helper function to convert numbers to proper places
+  function numToPlace(num) {
+    return num === 1 ? '1st' :
+           num === 2 ? '2nd' :
+           '3rd';
+  }
+
   const containerId = place === 1 ? '#teamAccordionFirst' :
                       place === 2 ? '#teamAccordionSecond' :
                       '#teamAccordionThird';
@@ -42,15 +48,21 @@ function drawTeam(team, place, sortBy = 'Points') {
   // Get path for team icon with wings
   const imagePath = window.location.origin + window.location.pathname + 'site-assets/' + team.color + '-team-wings-302x96.png';
   // Spell out the team's place
-  const properPlace = place === 1 ? '1st Place' :
-                      place === 2 ? '2nd Place' :
-                      '3rd Place';
+  const properPlace = numToPlace(place);
+
+  // Get the number of the WODs completed, so far
+  const wodKeys = Object.keys(team.wods).map(function(x) { return Number(x);});
 
   // Add content to the tab, with styling classes!
   let tabTitleContent = ''
-  tabTitleContent += '<span class="teamLeaderboard__teamPlace">' + properPlace + '</span>';
+  tabTitleContent += '<span class="teamLeaderboard__teamPlace">' + properPlace + ' Place</span>';
   tabTitleContent += '<img src="' + imagePath + '" class="teamLeaderboard__icon">'
   tabTitleContent += '<h2 class="teamLeaderboard__teamName">' + teamName + '</h2>';
+  tabTitleContent += '<div class="teamLeaderboard__weekly">';
+  wodKeys.forEach(function(wod) {
+    tabTitleContent += '<span class="teamLeaderboard__points--weekly">19.' +  (wod + 1) + ': ' + numToPlace(team.weekly_points[wod]) + '</span>';
+  });
+  tabTitleContent += '</div>';
   tabTitleContent += '<div class="teamLeaderboard__points">';
   tabTitleContent += '<span class="teamLeaderboard__points--rank">Rank Points: ' + team.overall_points + '</span>';
   tabTitleContent += '<span class="teamLeaderboard__points--total">Total Points: ' + team.overall + '</span>';
